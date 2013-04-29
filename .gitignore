@@ -1,0 +1,13 @@
+libs/*
+log/*
+nbproject/*
+temp/*
+.idea/*
+
+.DS_Store
+!.gitignore
+!.htaccess
+
+
+www/css/cssloader-*
+www/js/jsloader-*

@@ -1,0 +1,29 @@
+{
+    "name": "snake-aas/cms",
+    "description": "Personal page powered by Nette Framework",
+    "homepage": "http://github.com/snake-aas/cms",
+    "license": "CC BY-SA",
+    "authors": [
+        {
+            "name": "Martin Snake.AAS Grossmann",
+            "homepage": "http://vyvoj.net"
+        },
+        {
+            "name": "Bibiana Violet",
+            "homepage": ""
+        }
+    ],
+    "config": {
+        "vendor-dir": "libs"
+    },
+    "require": {
+        "php": ">= 5.3.13",
+        "nette/nette": "2.0.*",
+        "JanMarek/WebLoader": "2.1.*",
+        "leafo/lessphp": "v0.3.9",
+        "doctrine/orm": "*"
+    },
+    "require-dev": {
+        "nette/tester": "@dev"
+    }
+}
