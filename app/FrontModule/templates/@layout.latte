@@ -1,0 +1,36 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
+
+  {control css}
+  	
+  <link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	
+{block head}{/block}
+</head>
+
+<body>
+	<script> document.body.className += ' js' </script>
+
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+	{include #content}
+
+  {control js}
+	{block scripts}{/block}
+</body>
+</html>

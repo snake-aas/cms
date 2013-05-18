@@ -1,7 +1,6 @@
 <?php
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
-use Nette\Application\Routers\SimpleRouter;
 
 
 /**
@@ -14,8 +13,27 @@ class RouterFactory {
 	 */
 	public function createRouter() {
 		$router = new RouteList();
-		$router[] = new Route('index.php', 'Homepage:default', Route::ONE_WAY);
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+
+		$router[] = new Route('index.php', array(
+			'module'	=>	'Front',
+			'presenter'	=>	'Homepage',
+			'action'	=>	'default'
+		), Route::ONE_WAY);
+
+		$router[] = new Route('admin[/<presenter>[/<action>[/<id>]]]', array(
+			'module'	=>	'Admin',
+			'presenter'	=>	'Homepage',
+			'action'	=>	'default',
+			'id'		=>	NULL
+		));
+
+		$router[] = new Route('[/<presenter>[/<action>[/<id>]]]', array(
+			'module'	=>	'Front',
+			'presenter'	=>	'Homepage',
+			'action'	=>	'default',
+			'id'		=>	NULL
+		));
+
 		return $router;
 	}
 
