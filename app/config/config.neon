@@ -29,6 +29,31 @@ common:
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
 
+		wlCssFilter: WebLoader\Filter\CssUrlsFilter(%wwwDir%)
+		lessFilter: WebLoader\Filter\LessFilter
+
+	webloader:
+		css:
+			front:
+				files:
+					- {files: ["*.css", "*.less"], from: %appDir%/FrontModule/assets/css}
+				filters:
+					- @wlCssFilter
+				fileFilters:
+					- @lessFilter
+			admin:
+				files:
+					- {files: ["*.css"], from: %appDir%/AdminModule/assets/css}
+				filters:
+					- @wlCssFilter
+		js:
+			front:
+				files:
+					- {files: ["*.js"], from: %appDir%/FrontModule/assets/js}
+			admin:
+				files:
+					- {files: ["*.js"], from: %appDir%/AdminModule/assets/js}
+
 
 	factories:
 

@@ -19,6 +19,10 @@ $configurator->createRobotLoader()
 // Create Dependency Injection container from config.neon file
 $configurator->addConfig(CONFIG_DIR . '/config.neon');
 $configurator->addConfig(CONFIG_DIR . '/config.local.neon', $configurator::NONE); // none section
+
+$webloaderExtension = new \WebLoader\Nette\Extension();
+$webloaderExtension->install($configurator);
+
 $container = $configurator->createContainer();
 
 return $container;

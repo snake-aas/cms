@@ -1,18 +1,19 @@
 <?php
 
-namespace AdminModule;
+namespace FrontModule;
 
 use \Nette\Application\UI\Presenter;
+use WebLoader\Nette\CssLoader;
+use WebLoader\Nette\JavaScriptLoader;
 
 /**
  * Base presenter for all application presenters.
  */
 abstract class BasePresenter extends Presenter {
 
-	public function createComponentCss()
-	{
-		return new \WebLoader\Nette\CssLoader(
-			$this->context->webloader->cssAdminCompiler,
+	public function createComponentCss() {
+		return new CssLoader(
+			$this->context->webloader->cssFrontCompiler,
 			$this->template->basePath . '/webtemp'
 		);
 	}
@@ -20,8 +21,8 @@ abstract class BasePresenter extends Presenter {
 
 	public function createComponentJs()
 	{
-		return new \WebLoader\Nette\JavaScriptLoader(
-			$this->context->webloader->jsAdminCompiler,
+		return new JavaScriptLoader(
+			$this->context->webloader->jsFrontCompiler,
 			$this->template->basePath . '/webtemp'
 		);
 	}
