@@ -6,6 +6,11 @@
 #
 common:
 	parameters:
+		database:
+			host: 127.0.0.1
+			user:
+			password:
+			dbname:
 
 	php:
 		date.timezone: Europe/Prague
@@ -15,22 +20,23 @@ common:
 		application:
 			errorPresenter: Error
 
-		database:
-			dsn: 'mysql:host=localhost;dbname=test'
-			user:
-			password:
-
 		session:
 			expiration: 14 days
 
+	doctrine:
+		host:		%database.host%
+		user:		%database.user%
+		password:	%database.password%
+		dbname:		%database.dbname%
+		metadata:
+			Entities: annotations("%appDir%/model")
 
 	services:
-		authenticator: Authenticator
-		routerFactory: RouterFactory
-		router: @routerFactory::createRouter
+		routerFactory:	RouterFactory
+		router:			@routerFactory::createRouter
 
-		wlCssFilter: WebLoader\Filter\CssUrlsFilter(%wwwDir%)
-		lessFilter: WebLoader\Filter\LessFilter
+		wlCssFilter:	WebLoader\Filter\CssUrlsFilter(%wwwDir%)
+		lessFilter:		WebLoader\Filter\LessFilter
 
 	webloader:
 		css:

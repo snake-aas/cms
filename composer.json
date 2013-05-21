@@ -21,7 +21,8 @@
         "nette/nette": "2.0.*",
         "JanMarek/WebLoader": "2.1.*",
         "leafo/lessphp": "v0.3.9",
-        "doctrine/orm": "*"
+        "doctrine/orm": "2.3.*@stable",
+		"kdyby/doctrine": "v0.9.1"
     },
     "require-dev": {
         "nette/tester": "@dev"
