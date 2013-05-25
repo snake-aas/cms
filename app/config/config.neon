@@ -4,66 +4,60 @@
 # If you don't protect this directory from direct web access, anybody will be able to see your passwords.
 # http://nette.org/security-warning
 #
-common:
-	parameters:
-		database:
-			host: 127.0.0.1
-			user:
-			password:
-			dbname:
+parameters:
+	database:
+		host: 127.0.0.1
+		user:
+		password:
+		dbname:
 
-	php:
-		date.timezone: Europe/Prague
-		# zlib.output_compression: yes
+php:
+	date.timezone: Europe/Prague
+	# zlib.output_compression: yes
 
-	nette:
-		application:
-			errorPresenter: Error
+nette:
+	application:
+		errorPresenter: Error
 
-		session:
-			expiration: 14 days
+	session:
+		expiration: 14 days
 
-	doctrine:
-		host:		%database.host%
-		user:		%database.user%
-		password:	%database.password%
-		dbname:		%database.dbname%
-		metadata:
-			Entities: annotations("%appDir%/model")
+doctrine:
+	host:		%database.host%
+	user:		%database.user%
+	password:	%database.password%
+	dbname:		%database.dbname%
+	metadata:
+		Entities: annotations("%appDir%/model")
 
-	services:
-		routerFactory:	RouterFactory
-		router:			@routerFactory::createRouter
+services:
+	routerFactory:	RouterFactory
+	router:			@routerFactory::createRouter
 
-		wlCssFilter:	WebLoader\Filter\CssUrlsFilter(%wwwDir%)
-		lessFilter:		WebLoader\Filter\LessFilter
+	wlCssFilter:	WebLoader\Filter\CssUrlsFilter(%wwwDir%)
+	lessFilter:		WebLoader\Filter\LessFilter
 
-	webloader:
-		css:
-			front:
-				files:
-					- {files: ["*.css", "*.less"], from: %appDir%/FrontModule/assets/css}
-				filters:
-					- @wlCssFilter
-				fileFilters:
-					- @lessFilter
-			admin:
-				files:
-					- {files: ["*.css"], from: %appDir%/AdminModule/assets/css}
-				filters:
-					- @wlCssFilter
-		js:
-			front:
-				files:
-					- {files: ["*.js"], from: %appDir%/FrontModule/assets/js}
-			admin:
-				files:
-					- {files: ["*.js"], from: %appDir%/AdminModule/assets/js}
-
-
-	factories:
+webloader:
+	css:
+		front:
+			files:
+				- {files: ["*.css", "*.less"], from: %appDir%/FrontModule/assets/css}
+			filters:
+				- @wlCssFilter
+			fileFilters:
+				- @lessFilter
+		admin:
+			files:
+				- {files: ["*.css"], from: %appDir%/AdminModule/assets/css}
+			filters:
+				- @wlCssFilter
+	js:
+		front:
+			files:
+				- {files: ["*.js"], from: %appDir%/FrontModule/assets/js}
+		admin:
+			files:
+				- {files: ["*.js"], from: %appDir%/AdminModule/assets/js}
 
 
-production < common:
-
-development < common:
+factories:
