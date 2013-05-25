@@ -1,37 +1,13 @@
 <?php
 
-namespace Test;
+/**
+* Test: Example test.
+*
+* @testCase ExampleTest
+*/
 
-use Nette,
-	Tester,
-	Tester\Assert;
+require __DIR__ . '/bootstrap.php';
 
-$container = require __DIR__ . '/bootstrap.php';
-
-
-
-class ExampleTest extends Tester\TestCase
-{
-	private $container;
-
-
-	function __construct(Nette\DI\Container $container)
-	{
-		$this->container = $container;
-	}
-
-
-	function setUp()
-	{
-	}
-
-
-	function testSomething()
-	{
-		Assert::true( true );
-	}
-
-}
-
-
-id(new ExampleTest($container))->run();
+Assert::equal( 1, 1 );
+Assert::equal( true, 1 );
+	
